@@ -1,0 +1,9 @@
+<ul>
+<% @user.each do |thing| %>
+<li>
+<%= link_to thing.title, thing %>
+</li>
+<% end %>
+</ul>
+<%= link_to "New Article", new_article_path %>
+
