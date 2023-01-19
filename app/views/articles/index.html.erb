@@ -1,9 +1,34 @@
-<ul>
-<% @user.each do |thing| %>
-<li>
-<%= link_to thing.title, thing %>
-</li>
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Body</th>
+      <th colspan="3"scope="col" >Handle</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+<% @user.each do |article| %>
+
+      <th scope="row"><%= article.id%></th>
+      <td><%= article.title%></td>
+      <td><%= article.body%></td>
+	  <td><%= link_to 'show', article_path(article) %>
+	  <td><%= link_to 'edit', edit_article_path(article) %>
+      <td><%= link_to 'delete', article_path(article), data: {
+                    turbo_method: :delete,
+					turbo_confirm: "Are you sure?"} %></td>
+    </tr>
 <% end %>
-</ul>
-<%= link_to "New Article", new_article_path %>
+
+	 </tbody>
+</table>
+<%= link_to "New Article", new_article_path%>
 
